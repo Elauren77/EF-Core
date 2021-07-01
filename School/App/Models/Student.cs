@@ -1,11 +1,14 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace App
 {
     public class Student
     {
-        public enum Classification {
+        public enum Classification
+        {
             Freshman = 0,
             Sophomore = 1,
             Junior = 2,
@@ -14,9 +17,8 @@ namespace App
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public int Age {get; set;}
+        public int Age { get; set; }
         public Classification classification;
-        
-        public ICollection<Grade> GPA {get; set;}
+        public ICollection<Grade> GPA { get; set; }
     }
 }

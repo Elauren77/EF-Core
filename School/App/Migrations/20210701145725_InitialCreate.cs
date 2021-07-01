@@ -60,28 +60,27 @@ namespace App.Migrations
             migrationBuilder.InsertData(
                 table: "Grades",
                 columns: new[] { "Id", "CourseName", "StudentId", "grade" },
-                values: new object[] { 4, "Chem 302", 1, 75f });
+                values: new object[] { 7, "History 301", 1, 46f });
 
             migrationBuilder.InsertData(
                 table: "Grades",
                 columns: new[] { "Id", "CourseName", "StudentId", "grade" },
-                values: new object[] { 1, "Math 101", 2, 97f });
+                values: new object[] { 8, "Math 201", 2, 94f });
 
             migrationBuilder.InsertData(
                 table: "Grades",
                 columns: new[] { "Id", "CourseName", "StudentId", "grade" },
-                values: new object[] { 2, "History 201", 2, 46f });
+                values: new object[] { 9, "Chem 201", 2, 84f });
 
             migrationBuilder.InsertData(
                 table: "Grades",
                 columns: new[] { "Id", "CourseName", "StudentId", "grade" },
-                values: new object[] { 3, "Math 101", 3, 94f });
+                values: new object[] { 6, "Chem 402", 3, 75f });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Grades_StudentId",
                 table: "Grades",
-                column: "StudentId",
-                unique: true);
+                column: "StudentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

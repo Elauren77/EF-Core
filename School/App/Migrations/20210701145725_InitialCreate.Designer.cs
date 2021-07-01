@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace App.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20210630204549_InitialCreate")]
+    [Migration("20210701145725_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -34,39 +34,38 @@ namespace App.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("StudentId")
-                        .IsUnique();
+                    b.HasIndex("StudentId");
 
                     b.ToTable("Grades");
 
                     b.HasData(
                         new
                         {
-                            Id = 1,
-                            CourseName = "Math 101",
-                            StudentId = 2,
-                            grade = 97f
-                        },
-                        new
-                        {
-                            Id = 2,
-                            CourseName = "History 201",
-                            StudentId = 2,
+                            Id = 7,
+                            CourseName = "History 301",
+                            StudentId = 1,
                             grade = 46f
                         },
                         new
                         {
-                            Id = 3,
-                            CourseName = "Math 101",
-                            StudentId = 3,
+                            Id = 8,
+                            CourseName = "Math 201",
+                            StudentId = 2,
                             grade = 94f
                         },
                         new
                         {
-                            Id = 4,
-                            CourseName = "Chem 302",
-                            StudentId = 1,
+                            Id = 6,
+                            CourseName = "Chem 402",
+                            StudentId = 3,
                             grade = 75f
+                        },
+                        new
+                        {
+                            Id = 9,
+                            CourseName = "Chem 201",
+                            StudentId = 2,
+                            grade = 84f
                         });
                 });
 
@@ -115,16 +114,18 @@ namespace App.Migrations
 
             modelBuilder.Entity("App.Grade", b =>
                 {
-                    b.HasOne("App.Student", null)
-                        .WithOne("Grade")
-                        .HasForeignKey("App.Grade", "StudentId")
+                    b.HasOne("App.Student", "Student")
+                        .WithMany("GPA")
+                        .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("App.Student", b =>
                 {
-                    b.Navigation("Grade");
+                    b.Navigation("GPA");
                 });
 #pragma warning restore 612, 618
         }
