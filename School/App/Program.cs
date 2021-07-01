@@ -9,7 +9,13 @@ namespace App
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var database = new DataContext();
+            var students = database.Students.ToList();
+            foreach (var student in students)
+            {
+                Console.WriteLine($"{student.Id} : {student.FirstName} {student.LastName}");
+            }
+            
         }
     }
 }
